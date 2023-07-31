@@ -18,7 +18,7 @@ public interface ICityBo {
 
 	int borrar(int cityId) throws InternalException;
 
-	void crearArchivo() throws InternalException;
+	String crearArchivo() throws InternalException;
 
 	String obtenerPorIdStore(int cityId) throws InternalException;
 

@@ -2,6 +2,9 @@ package com.appstracta.bo.impl;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
@@ -88,7 +91,7 @@ public class CityBoImpl implements ICityBo {
 	}
 
 	@Override
-	public void crearArchivo() throws InternalException{
+	public String crearArchivo() throws InternalException{
 		try {
 			List<CityBean> ciudades = this.obtenerTodos();
 
@@ -97,6 +100,8 @@ public class CityBoImpl implements ICityBo {
 					writer.write(ciudad + System.lineSeparator());
 				}
 			}
+
+			return Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("ciudades.txt")));
 		}
 		catch (InternalException ex) {
 			throw ex;
